@@ -5,6 +5,7 @@ import Home from './Demo/Home';
 import Things from './Demo/Things';
 import NoMatch from './components/NoMatch';
 import NavBar from './components/NavBar';
+import ProductAPIDemo from './Demo/ProductAPIDemo';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/things' component={Things} />
+        <Route exact path='/products' component={ProductAPIDemo} />
+        {/* <Route exact path='/products/:id' component={Things} /> */}
         <Route component={NoMatch} />
       </Switch>
     </div>
