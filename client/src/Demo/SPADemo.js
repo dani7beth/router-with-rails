@@ -1,31 +1,22 @@
-
-import { Spinner } from "react-bootstrap";
 import { useAxiosOnMount } from "../hooks/axiosHooks";
 import SpinnerBasic from '../components/SpinnerBasic';
 import ErrorPage from "../components/ErrorPage";
+import Products from "../Product/Products";
 
 export default ()=>{
 
     const[products, loadingProducts, productError] = useAxiosOnMount(
-        '/api/produc'
+        '/api/products'
     );
    
-    if(loadingProducts){
-        return(
-            <SpinnerBasic />
-        );
-    }
-
-    if(productError){
-        return <ErrorPage err={productError} />;
-    }
 
     return(
         <>
         <h1>Amazon Home Page (SPA DEMO) </h1>
-        {products.map((p)=> (
-            <p>{p.name}</p>
-        ))}
+        <Products
+        products={products} 
+        loading={loadingProducts} 
+        error={productError} />
         </>
     );
 };

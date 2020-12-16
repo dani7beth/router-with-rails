@@ -10,7 +10,8 @@ export default () =>{
                  <Nav className='mr-auto'>
                      <Nav.Link href='/'>Home</Nav.Link>
                      {/* <Nav.Link><Link to="/things">Things</Link></Nav.Link> */}
-                     <Nav.Link href='/products'>Products</Nav.Link>
+                     {/* <Nav.Link href='/products'>Products</Nav.Link> */}
+                     {/* <Nav.Link href="/reviewAPI/:productId">Reviews</Nav.Link> */}
                      <Nav.Link href='/spa_demo'>Spa Demo</Nav.Link>
                  </Nav>
              
