@@ -42,7 +42,7 @@ export default () =>{
 
             let res = await Axios.post(`/api/products`, product);
             console.log(res);
-
+            setProducts([res.data, ...products]);
 
         }catch(err){
             console.log(err);
@@ -53,6 +53,8 @@ export default () =>{
         try{
             let res = await Axios.put(`/api/products/${id}`, product);
             console.log(res);
+            let newProducts = products.map((p)=> (p.id !== id ? p : res.data));
+            setProducts(newProducts);
 
         }catch(err){
             console.log(err);
@@ -63,6 +65,8 @@ export default () =>{
         try{
             let res = await Axios.delete(`/api/products/${id}`);
             console.log(res);
+            let newProducts = products.filter((p)=> p.id !== res.data.id);
+            setProducts(newProducts);
 
         }catch(err){
             console.log(err);
@@ -76,16 +80,18 @@ export default () =>{
             {/* <Link to={`/products/${p.id}`}></Link> */}
                 {products.map((p)=>{
                 return(
+                    <>
                 <Card 
                 bg="light" 
                 style={{ width: '18rem' }} 
                 key={p.id}>
-                    <Card.Header>{p.name}</Card.Header>
-                    <Card.Title>{p.description}</Card.Title>
+                    <Card.Title>{p.name}</Card.Title>
+                    <Card.Subtitle>{p.department}</Card.Subtitle>
+                    <Card.Text>{p.description}</Card.Text>
                     <Card.Text>${p.price}</Card.Text>
-                    <Card.Text>{p.department}</Card.Text>
-
                 </Card>
+                <br />
+                </>
                 )
             })};
             </>
